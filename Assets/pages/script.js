@@ -19,11 +19,11 @@ var quiz = [
     // "Arrays in JavaScript can store what type of information?": "All of the Above"
     Question1 = {
         question: "Arrays in JavaScript can store what type of information?",
-        answer1: "All of the above",
+        answer1: "Other Arrays",
         answer2: "Strings",
         answer3: "Numbers",
-        answer4: "Other Arrays",
-        correct: "1"
+        answer4: "All of the above",
+        correct: "4"
     },
     Question2 = {
         question: "Something",
@@ -114,24 +114,28 @@ function displayQuestion(index) {
         answer.setAttribute("id", "1");
         answer.textContent = quiz[index].answer1;
         answerButtons.appendChild(answer);
+        answerButtons.appendChild(document.createElement("br"));
 
         answer = document.createElement("button");
         answer.setAttribute("class", "button");
         answer.setAttribute("id", "2");
         answer.textContent = quiz[index].answer2;
         answerButtons.appendChild(answer);
+        answerButtons.appendChild(document.createElement("br"));
 
         answer = document.createElement("button");
         answer.setAttribute("class", "button");
         answer.setAttribute("id", "3");
         answer.textContent = quiz[index].answer3;
         answerButtons.appendChild(answer);
+        answerButtons.appendChild(document.createElement("br"));
 
         answer = document.createElement("button");
         answer.setAttribute("class", "button");
         answer.setAttribute("id", "4");
         answer.textContent = quiz[index].answer4;
         answerButtons.appendChild(answer);
+        answerButtons.appendChild(document.createElement("br"));
     }
 };
 
