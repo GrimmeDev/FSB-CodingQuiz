@@ -187,9 +187,16 @@ function inputScore() {
 
     // create input box
     var inputName = document.createElement("input");
-    inputName.setAttribute("class", "form-text");
+    inputName.setAttribute("class", "form-control form-text");
     inputName.setAttribute("placeholder", "Enter your name or initials...");
-    mainDisplay.appendChild(inputName);
+
+    // create submit button
+    var submitScore = document.createElement("button");
+    submitScore.setAttribute("class", "ml- 2 btn btn-primary");
+    submitScore.textContent = "Submit Score";
+
+    answerButtons.appendChild(inputName);
+    answerButtons.appendChild(submitScore);
 };
 
 function startQuiz() {
