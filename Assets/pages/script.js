@@ -101,7 +101,7 @@ var quiz = [
 
 function displayQuestion(index) {
     if (index >= quiz.length) {
-        alert("No more questions.");
+        // alert("No more questions.");
         // call scores page
         quizFinished = true;
     }
@@ -111,7 +111,7 @@ function displayQuestion(index) {
         // create 4 buttons
         for (var i = 0; i < 4; i++) {
             var answer = document.createElement("button");
-            answer.setAttribute("class", "button");
+            answer.setAttribute("class", "btn btn-primary m-1");
             // used to do a comparison of ID value with the object property of correct
             answer.setAttribute("id", (i + 1).toString());
             if (i == 0)
@@ -123,36 +123,8 @@ function displayQuestion(index) {
             else
                 answer.textContent = quiz[index].answer4;
             answerButtons.appendChild(answer);
-            answerButtons.appendChild(document.createElement("br"));
+            // answerButtons.appendChild(document.createElement("br"));
         }
-
-        // var answer = document.createElement("button");
-        // answer.setAttribute("class", "button");
-        // answer.setAttribute("id", "1");
-        // answer.textContent = quiz[index].answer1;
-        // answerButtons.appendChild(answer);
-        // answerButtons.appendChild(document.createElement("br"));
-
-        // answer = document.createElement("button");
-        // answer.setAttribute("class", "button");
-        // answer.setAttribute("id", "2");
-        // answer.textContent = quiz[index].answer2;
-        // answerButtons.appendChild(answer);
-        // answerButtons.appendChild(document.createElement("br"));
-
-        // answer = document.createElement("button");
-        // answer.setAttribute("class", "button");
-        // answer.setAttribute("id", "3");
-        // answer.textContent = quiz[index].answer3;
-        // answerButtons.appendChild(answer);
-        // answerButtons.appendChild(document.createElement("br"));
-
-        // answer = document.createElement("button");
-        // answer.setAttribute("class", "button");
-        // answer.setAttribute("id", "4");
-        // answer.textContent = quiz[index].answer4;
-        // answerButtons.appendChild(answer);
-        // answerButtons.appendChild(document.createElement("br"));
     }
 };
 
@@ -225,7 +197,7 @@ function startQuiz() {
     // target timer with count variable
     timer.textContent = timeLeft;
 
-    // display first question
+    // display first question and prepare buttons for answer validation
     displayQuestion(quizIndex);
     answerChecking(quizIndex);
 
@@ -235,14 +207,10 @@ function startQuiz() {
         // target timer with count variable
         timer.textContent = timeLeft;
 
-        // once button is clicked, if answer is correct
-        // display
-
-
         // if seconds = 0
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("Time ran out. Quiz over.");
+            // alert("Time ran out. Quiz over.");
             // call scores page
             inputScore();
         }
