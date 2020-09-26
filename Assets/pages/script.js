@@ -1,6 +1,6 @@
 // initial variable declaration to store positions of divs
 var topText = document.getElementById("nonQuestions");
-var questions = document.getElementById("Questions");
+var scoresPage = document.getElementById("scores");
 var mainDisplay = document.querySelector(".mainDisplay");
 var timer = document.getElementById("Timer");
 var answers = document.getElementById("answer");
@@ -11,6 +11,7 @@ var startButton = document.getElementById("start");
 var value = 0;
 var quizIndex = 0;
 var timeLeft = 75;
+var quizFinished = false;
 
 // object container question and correct answers
 // format style = Question : Correct Answer
@@ -101,6 +102,8 @@ var quiz = [
 function displayQuestion(index) {
     if (index >= quiz.length) {
         alert("No more questions.");
+        // call scores page
+        quizFinished = true;
     }
     else {
         mainDisplay.textContent = quiz[index].question;
@@ -136,9 +139,13 @@ function displayQuestion(index) {
 // will also delete previously created buttons
 function redrawQuiz(quizIndex) {
     quizIndex++;
-    answerButtons.innerHTML = '';
+    clearButtons();
     displayQuestion(quizIndex);
     answerChecking(quizIndex);
+};
+
+function clearButtons() {
+    answerButtons.innerHTML = '';
 };
 
 function answerChecking(quizIndex) {
@@ -147,10 +154,10 @@ function answerChecking(quizIndex) {
     for (var i = 0; i < allAnswers.length; i++) {
         allAnswers[i].addEventListener("click", function () {
             // testing to determine which button was clicked
-            console.clear();
-            console.log("Correct answer: " + quiz[quizIndex].correct);
-            console.log("You clicked: ", this.innerHTML);
-            console.log(this.id);
+            // console.clear();
+            // console.log("Correct answer: " + quiz[quizIndex].correct);
+            // console.log("You clicked: ", this.innerHTML);
+            // console.log(this.id);
             if (this.id === quiz[quizIndex].correct) {
                 // console.log("Correct!");
                 redrawQuiz(quizIndex);
@@ -168,6 +175,28 @@ function answerChecking(quizIndex) {
             }
         })
     }
+};
+
+function inputScore() {
+    // enables High Scores title
+    scoresPage.setAttribute("class", "visible");
+    // clears buttons from last question answered OR if time ran out
+    clearButtons();
+
+    // clears text below input field
+    lineBreak.setAttribute("class", "invisible");
+    answers.setAttribute("class", "invisible");
+
+    if (timeLeft == 0)
+        mainDisplay.textContent = "You have run out of time. Your score is " + timeLeft.toString();
+    else
+        mainDisplay.textContent = "You have finished all the questions. Your score is " + timeLeft.toString();
+
+    // create input box
+    var inputName = document.createElement("input");
+    inputName.setAttribute("class", "form-text");
+    inputName.setAttribute("placeholder", "Enter your name or initials...");
+    mainDisplay.appendChild(inputName);
 };
 
 function startQuiz() {
@@ -190,9 +219,16 @@ function startQuiz() {
 
 
         // if seconds = 0
-        if (timeLeft == 0) {
+        if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            // alert("Time ran out. Quiz over.");
+            alert("Time ran out. Quiz over.");
+            // call scores page
+            inputScore();
+        }
+        else if (quizFinished) {
+            // call score page
+            clearInterval(timerInterval);
+            inputScore();
         }
     }, 1000);
 }
