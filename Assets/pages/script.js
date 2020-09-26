@@ -109,33 +109,50 @@ function displayQuestion(index) {
         mainDisplay.textContent = quiz[index].question;
 
         // create 4 buttons
-        var answer = document.createElement("button");
-        answer.setAttribute("class", "button");
-        answer.setAttribute("id", "1");
-        answer.textContent = quiz[index].answer1;
-        answerButtons.appendChild(answer);
-        answerButtons.appendChild(document.createElement("br"));
+        for (var i = 0; i < 4; i++) {
+            var answer = document.createElement("button");
+            answer.setAttribute("class", "button");
+            // used to do a comparison of ID value with the object property of correct
+            answer.setAttribute("id", (i + 1).toString());
+            if (i == 0)
+                answer.textContent = quiz[index].answer1;
+            else if (i == 1)
+                answer.textContent = quiz[index].answer2;
+            else if (i == 2)
+                answer.textContent = quiz[index].answer3;
+            else
+                answer.textContent = quiz[index].answer4;
+            answerButtons.appendChild(answer);
+            answerButtons.appendChild(document.createElement("br"));
+        }
 
-        answer = document.createElement("button");
-        answer.setAttribute("class", "button");
-        answer.setAttribute("id", "2");
-        answer.textContent = quiz[index].answer2;
-        answerButtons.appendChild(answer);
-        answerButtons.appendChild(document.createElement("br"));
+        // var answer = document.createElement("button");
+        // answer.setAttribute("class", "button");
+        // answer.setAttribute("id", "1");
+        // answer.textContent = quiz[index].answer1;
+        // answerButtons.appendChild(answer);
+        // answerButtons.appendChild(document.createElement("br"));
 
-        answer = document.createElement("button");
-        answer.setAttribute("class", "button");
-        answer.setAttribute("id", "3");
-        answer.textContent = quiz[index].answer3;
-        answerButtons.appendChild(answer);
-        answerButtons.appendChild(document.createElement("br"));
+        // answer = document.createElement("button");
+        // answer.setAttribute("class", "button");
+        // answer.setAttribute("id", "2");
+        // answer.textContent = quiz[index].answer2;
+        // answerButtons.appendChild(answer);
+        // answerButtons.appendChild(document.createElement("br"));
 
-        answer = document.createElement("button");
-        answer.setAttribute("class", "button");
-        answer.setAttribute("id", "4");
-        answer.textContent = quiz[index].answer4;
-        answerButtons.appendChild(answer);
-        answerButtons.appendChild(document.createElement("br"));
+        // answer = document.createElement("button");
+        // answer.setAttribute("class", "button");
+        // answer.setAttribute("id", "3");
+        // answer.textContent = quiz[index].answer3;
+        // answerButtons.appendChild(answer);
+        // answerButtons.appendChild(document.createElement("br"));
+
+        // answer = document.createElement("button");
+        // answer.setAttribute("class", "button");
+        // answer.setAttribute("id", "4");
+        // answer.textContent = quiz[index].answer4;
+        // answerButtons.appendChild(answer);
+        // answerButtons.appendChild(document.createElement("br"));
     }
 };
 
