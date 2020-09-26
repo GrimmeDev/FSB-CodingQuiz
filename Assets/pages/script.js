@@ -7,8 +7,8 @@ var answers = document.getElementById("answer");
 var answerButtons = document.getElementById("buttons");
 var lineBreak = document.getElementById("break");
 var startButton = document.getElementById("start");
-var value = 0;
 
+var value = 0;
 var quizIndex = 0;
 var timeLeft = 75;
 
@@ -31,50 +31,114 @@ var quiz = [
         answer3: "wrong",
         answer4: "wrong",
         correct: "2"
+    },
+    Question3 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question4 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question5 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question6 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question7 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question8 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question9 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
+    },
+    Question10 = {
+        question: "Help me",
+        answer1: "wrong",
+        answer2: "wrong",
+        answer3: "right",
+        answer4: "wrong",
+        correct: "3"
     }
 ];
 
 function displayQuestion(index) {
-    mainDisplay.textContent = quiz[index].question;
+    if (index >= quiz.length) {
+        alert("No more questions.");
+    }
+    else {
+        mainDisplay.textContent = quiz[index].question;
 
-    // create 4 buttons
-    var answer = document.createElement("button");
-    answer.setAttribute("class", "button");
-    answer.setAttribute("id", "1");
-    answer.textContent = quiz[index].answer1;
-    answerButtons.appendChild(answer);
+        // create 4 buttons
+        var answer = document.createElement("button");
+        answer.setAttribute("class", "button");
+        answer.setAttribute("id", "1");
+        answer.textContent = quiz[index].answer1;
+        answerButtons.appendChild(answer);
 
-    answer = document.createElement("button");
-    answer.setAttribute("class", "button");
-    answer.setAttribute("id", "2");
-    answer.textContent = quiz[index].answer2;
-    answerButtons.appendChild(answer);
+        answer = document.createElement("button");
+        answer.setAttribute("class", "button");
+        answer.setAttribute("id", "2");
+        answer.textContent = quiz[index].answer2;
+        answerButtons.appendChild(answer);
 
-    answer = document.createElement("button");
-    answer.setAttribute("class", "button");
-    answer.setAttribute("id", "3");
-    answer.textContent = quiz[index].answer3;
-    answerButtons.appendChild(answer);
+        answer = document.createElement("button");
+        answer.setAttribute("class", "button");
+        answer.setAttribute("id", "3");
+        answer.textContent = quiz[index].answer3;
+        answerButtons.appendChild(answer);
 
-    answer = document.createElement("button");
-    answer.setAttribute("class", "button");
-    answer.setAttribute("id", "4");
-    answer.textContent = quiz[index].answer4;
-    answerButtons.appendChild(answer);
+        answer = document.createElement("button");
+        answer.setAttribute("class", "button");
+        answer.setAttribute("id", "4");
+        answer.textContent = quiz[index].answer4;
+        answerButtons.appendChild(answer);
+    }
 };
 
 // function used to redraw all quiz items as well as update quizIndex
 // will also delete previously created buttons
 function redrawQuiz(quizIndex) {
-    if (quizIndex == quiz.length) {
-        alert("Quiz finished.");
-    }
-    else {
-        quizIndex++;
-        answerButtons.innerHTML = '';
-        displayQuestion(quizIndex);
-        answerChecking(quizIndex);
-    }
+    quizIndex++;
+    answerButtons.innerHTML = '';
+    displayQuestion(quizIndex);
+    answerChecking(quizIndex);
 };
 
 function answerChecking(quizIndex) {
@@ -104,7 +168,6 @@ function answerChecking(quizIndex) {
             }
         })
     }
-
 };
 
 function startQuiz() {
@@ -115,7 +178,6 @@ function startQuiz() {
     // display first question
     displayQuestion(quizIndex);
     answerChecking(quizIndex);
-
 
     var timerInterval = setInterval(function () {
         // seconds--;
