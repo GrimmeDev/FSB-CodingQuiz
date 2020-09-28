@@ -13,6 +13,29 @@ var quizIndex = 0;
 var timeLeft = 75;
 var quizFinished = false;
 
+// var userScoreLocal = window.localStorage.getItem("userScoreLocal");
+var userScoreLocal;
+
+// determines if userScoreLocal already exists in browser
+// if so, loads it into the variable userScoreLocal
+if (window.localStorage.getItem("userScoreLocal")) {
+    console.log("Found");
+    userScoreLocal = window.localStorage.getItem("userScoreLocal");
+}
+// if not found, creates it as an array and stores it into the browser
+else {
+    console.log("Not Found");
+    // userScoreLocal as an array
+    userScoreLocal = [];
+    window.localStorage.setItem("userScoreLocal", JSON.stringify(userScoreLocal));
+}
+
+// userScore object to contain submitted name and score
+var userScore = {
+    name: "",
+    score: 0,
+};
+
 // object container question and correct answers
 // format style = Question : Correct Answer
 var quiz = [
@@ -197,6 +220,26 @@ function inputScore() {
 
     answerButtons.appendChild(inputName);
     answerButtons.appendChild(submitScore);
+
+    // event listenter to submit new score
+    submitScore.addEventListener("click", function () {
+        // stores information into an object
+        userScore.name = inputName.value;
+        userScore.score = timeLeft;
+
+        window.localStorage.setItem("userScoreLocal", JSON.stringify(userScore));
+        // take user input name and score, place into an object
+        // compare if their name is already in local storage
+        // if yes, update score if new is higher
+        if (window.localStorage.getItem("userScoreLocal")) {
+            console.log("Found");
+        }
+        else {
+            console.log("Not Found");
+        }
+        // else add new name and score
+
+    });
 };
 
 function startQuiz() {
@@ -227,7 +270,7 @@ function startQuiz() {
             inputScore();
         }
     }, 1000);
-}
+};
 
 // event listeners
 startButton.addEventListener("click", startQuiz);
