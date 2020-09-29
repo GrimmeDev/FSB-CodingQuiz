@@ -21,7 +21,7 @@ function clearHS() {
 }
 
 // function to display all high scores on page
-window.onload = function displayScores() {
+function displayScores() {
     for (var i = 0; i < userScoreLocal.length; i++) {
         var listItem = document.createElement("li");
         // userScore.name = userScoreLocal[i].name;
@@ -34,9 +34,7 @@ window.onload = function displayScores() {
     }
 }
 
-
-
-
 // event listeners
 back.addEventListener("click", goHome);
 clear.addEventListener("click", clearHS);
+window.addEventListener("load", displayScores);
