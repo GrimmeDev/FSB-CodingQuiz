@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,30 @@
         crossorigin="anonymous"></script>
     <title>High Scores</title>
 </head>
+
 <body>
-    
+    <!-- container storing dom generated array of high scores -->
+    <div class="container">
+        <div class="row m-2 p-2 pt-5">
+            <div class="col-md-6">
+                <h1>High Scores</h1>
+            </div>
+        </div>
+        <div class="row m-2 p-1">
+            <div class="col-lg-12 text-left">
+                <ol class="ScoreDisplay">
+                    <!-- script will automatically populate list items, highest score at the top -->
+                </ol>
+            </div>
+        </div>
+        <div class="row m-2 p-2">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" id="back">Go Back</button>
+                <button type="button" class="btn btn-primary" id="clear">Clear Highscores</button>
+            </div>
+        </div>
+    </div>
+    <script src="./scoreScript.js"></script>
 </body>
+
 </html>
