@@ -8,6 +8,7 @@ var answers = document.getElementById("answer");
 var answerButtons = document.getElementById("buttons");
 var lineBreak = document.getElementById("break");
 var startButton = document.getElementById("start");
+var viewScores = document.getElementById("highscores");
 
 var value = 0;
 var quizIndex = 0;
@@ -238,9 +239,13 @@ function inputScore() {
         localStorage.setItem("userScoreLocal", JSON.stringify(userScoreLocal));
 
         // once score input to local storage, load scores.html
-        window.location.href="./Assets/pages/scores.html"
+        displayHighscores();
     });
 };
+
+function displayHighscores(){
+    window.location.href="./Assets/pages/scores.html"
+}
 
 function startQuiz() {
     startButton.parentNode.removeChild(startButton);
@@ -274,3 +279,4 @@ function startQuiz() {
 
 // event listeners
 startButton.addEventListener("click", startQuiz);
+viewScores.addEventListener("click", displayHighscores);
