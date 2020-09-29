@@ -13,22 +13,9 @@ var quizIndex = 0;
 var timeLeft = 75;
 var quizFinished = false;
 
-// var userScoreLocal = window.localStorage.getItem("userScoreLocal");
-var userScoreLocal;
-
-// determines if userScoreLocal already exists in browser
-// if so, loads it into the variable userScoreLocal
-if (window.localStorage.getItem("userScoreLocal")) {
-    console.log("Found");
-    userScoreLocal = window.localStorage.getItem("userScoreLocal");
-}
-// if not found, creates it as an array and stores it into the browser
-else {
-    console.log("Not Found");
-    // userScoreLocal as an array
-    userScoreLocal = [];
-    window.localStorage.setItem("userScoreLocal", JSON.stringify(userScoreLocal));
-}
+// attempt to pull from storage, if not found create empty array
+var userScoreLocal = JSON.parse(localStorage.getItem("userScoreLocal")) || [];
+// console.log(userScoreLocal);
 
 // userScore object to contain submitted name and score
 var userScore = {
@@ -227,18 +214,35 @@ function inputScore() {
         userScore.name = inputName.value;
         userScore.score = timeLeft;
 
-        window.localStorage.setItem("userScoreLocal", JSON.stringify(userScore));
-        // take user input name and score, place into an object
-        // compare if their name is already in local storage
-        // if yes, update score if new is higher
-        if (window.localStorage.getItem("userScoreLocal")) {
-            console.log("Found");
-        }
-        else {
-            console.log("Not Found");
-        }
-        // else add new name and score
+        // if (userScoreLocal.length > 0) {
+        //     for (var i of userScoreLocal) {
+        //         if (i.name == userScore.name) {
+        //             console.log("Found");
+        //             // updates score if same name found
+        //             i.score = userScore.score;
+        //             break;
+        //         }
+        //         else {
+        //             console.log("Not Found");
+        //             userScoreLocal.push(userScore);
+        //         }
+        //     }
+        // }
+        // else
+        userScoreLocal.push(userScore);
+        // console.log(userScoreLocal);
+        localStorage.setItem("userScoreLocal", JSON.stringify(userScoreLocal));
 
+        // compare if their name is already in local storage
+        // $(userScoreLocal).inArray
+        // if yes, update score if new is higher
+        // else add new name and score
+        // take user input name and score, place into an object
+        // append array with newest entry
+        // userScoreLocal.push(userScore);
+
+        // push entire array to local storage
+        // localStorage.setItem("userScoreLocal", JSON.stringify(userScoreLocal));
     });
 };
 
