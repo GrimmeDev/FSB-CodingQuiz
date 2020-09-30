@@ -38,76 +38,76 @@ var quiz = [
         correct: "4"
     },
     Question2 = {
-        question: "Something",
-        answer1: "wrong",
-        answer2: "right",
-        answer3: "wrong",
-        answer4: "wrong",
+        question: "A string needs to be wrapped in what?",
+        answer1: "Single Quotes",
+        answer2: "Double Quotes",
+        answer3: "Curly Brackets",
+        answer4: "Exclamation Points",
         correct: "2"
     },
     Question3 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
+        question: "When doing a boolean comparison for a generic value, you need to do 2 symbols of what?",
+        answer1: "||",
+        answer2: "&&",
+        answer3: "==",
+        answer4: "===",
         correct: "3"
     },
     Question4 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correct: "3"
+        question: "When doing an if statement, the correct order is what?",
+        answer1: "else/if",
+        answer2: "if/if/else",
+        answer3: "else if/if",
+        answer4: "if/else if/else",
+        correct: "4"
     },
     Question5 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correct: "3"
+        question: "The logical operand of '&&' stands for what?",
+        answer1: "Or",
+        answer2: "And",
+        answer3: "Not",
+        answer4: "Modelo",
+        correct: "2"
     },
     Question6 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
+        question: "A function always needs to be followed immediately with what?",
+        answer1: "Square Brackets",
+        answer2: "Angle Brackets",
+        answer3: "Parenthesis",
+        answer4: "An argument",
         correct: "3"
     },
     Question7 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correct: "3"
+        question: "To create an event on a specific element, the command is what? (Vanilla JavaScript)",
+        answer1: ".addEventListener",
+        answer2: ".click",
+        answer3: ".on",
+        answer4: ".listen",
+        correct: "1"
     },
     Question8 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correct: "3"
+        question: "An object in javascript needs to be wrapped with what?",
+        answer1: "Parenthesis",
+        answer2: "Curly Brackets",
+        answer3: "Square Brackets",
+        answer4: "Angle Brackets",
+        correct: "2"
     },
     Question9 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correct: "3"
+        question: "A number value, not a string value, needs to be wrapped with what?",
+        answer1: "Nothing",
+        answer2: "Single Quotes",
+        answer3: "Double Quotes",
+        answer4: "Angle Brackets",
+        correct: "1"
     },
     Question10 = {
-        question: "Help me",
-        answer1: "wrong",
-        answer2: "wrong",
-        answer3: "right",
-        answer4: "wrong",
-        correct: "3"
+        question: "To edit the text of an element in Vanilla JavaScript, you need to use which function?",
+        answer1: ".text",
+        answer2: ".value",
+        answer3: ".setAttribute()",
+        answer4: ".textContent",
+        correct: "4"
     }
 ];
 // #endregion
@@ -235,6 +235,7 @@ function inputScore() {
         // else
         //#endregion
         userScoreLocal.push(userScore);
+        userScoreLocal.sort(compare);
         // console.log(userScoreLocal);
         localStorage.setItem("userScoreLocal", JSON.stringify(userScoreLocal));
 
@@ -243,8 +244,20 @@ function inputScore() {
     });
 };
 
-function displayHighscores(){
-    window.location.href="./Assets/pages/scores.html"
+function compare(a, b) {
+    const scoreA = a.score;
+    const scoreB = b.score;
+
+    let comparison = 0;
+    if (scoreA > scoreB)
+        comparison = 1;
+    else if (scoreB > scoreA)
+        comparison = -1;
+    return comparison * -1;
+};
+
+function displayHighscores() {
+    window.location.href = "./Assets/pages/scores.html"
 }
 
 function startQuiz() {
