@@ -17,3 +17,13 @@ The purpose of this program is to create a timed Coding Assessment quiz that fol
 Primarily JavaScript for functionality, main page is HTML with minor CSS styling
 
 ### Psuedo Example:
+When I'm asked a question, I'm presented with 4 buttons
+Each button has a value to check against to determine if it is the correc button
+The comparison tells me if the answer to the previous question was correct or wrong
+Once the quiz is finished display the high scores of users who have done the quiz
+
+#### Example Image
+![Code Quiz Example](Assets/images/exampleImage.png)
+
+#### Link to live page
+<a href="https://grimmedev.github.io/FSB-CodingQuiz/">JavaScript Quiz</a>
